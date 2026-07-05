@@ -46,8 +46,7 @@ df['T'] = df['recency']
 # E=1：用户存在后续交互（发生观测事件）；E=0：达到最大间隔，视为删失样本
 df['E'] = (df['recency'] < max_recency).astype(int)
 
-# 4. 建模特征集【核心修复：移除recency，消除数据泄露】
-# 仅保留行为衍生特征，不使用与目标T同源的recency
+# 4. 建模特征集
 model_columns = [
     'T', 'E',
     'log_freq', 'log_pv_count', 'log_cart_count', 'log_fav_count',
